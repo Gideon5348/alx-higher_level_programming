@@ -1,0 +1,9 @@
+#!/bin/bash
+
+python_file="$PYFILE"
+
+if [ -f "$python_file" ]; then
+python3 "$python_file"
+else
+echo "Python file '$python_file' not found."
+fi
