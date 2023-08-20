@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
 def print_matrix_integer(matrix=[[]]):
+    if not matrix:
+        return
+
     for row in matrix:
         for column, number in enumerate(row):
             if column != len(row) - 1:
