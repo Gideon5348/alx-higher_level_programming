@@ -15,8 +15,8 @@ class Rectangle:
         Initializes a new Rectangle instance.
 
         Args:
-            width (int): The width of the rectangle.
-            height (int): The height of the rectangle.
+            width (int): The width of the rectangle (default is 0).
+            height (int): The height of the rectangle (default is 0).
         """
         self.width = width
         self.height = height
