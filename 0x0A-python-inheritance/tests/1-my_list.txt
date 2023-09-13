@@ -1,0 +1,33 @@
+import unittest
+from io import StringIO
+import sys
+
+class TestMyList(unittest.TestCase):
+
+    def setUp(self):
+        # Redirect stdout to capture printed output
+        self.old_stdout = sys.stdout
+        sys.stdout = StringIO()
+
+    def tearDown(self):
+        # Reset redirected stdout
+        sys.stdout = self.old_stdout
+
+    def test_print_sorted(self):
+        my_list = MyList()
+        my_list.append(1)
+        my_list.append(4)
+        my_list.append(2)
+        my_list.append(3)
+        my_list.append(5)
+
+        expected_output = "[1, 4, 2, 3, 5]\n[1, 2, 3, 4, 5]\n"
+
+        # Capture the printed output
+        my_list.print_sorted()
+        actual_output = sys.stdout.getvalue()
+
+        self.assertEqual(actual_output, expected_output)
+
+if __name__ == '__main__':
+    unittest.main()
