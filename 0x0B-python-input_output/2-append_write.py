@@ -8,7 +8,7 @@ def append_write(filename="", text=""):
 
     Args:
         filename (str): The name of the file to append to.
-        text (str): The string to append to the file. Defaults to an empty string.
+        text (str): The string to append to the file.
 
     Returns:
         int: The number of characters added to the file.
