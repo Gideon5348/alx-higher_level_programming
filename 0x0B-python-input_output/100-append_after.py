@@ -23,5 +23,5 @@ def append_after(filename="", search_string="", new_string=""):
 
             file.truncate()
 
-        with open(filename, mode="w", encoding="utf-8") as file:
-            file.write(new_string)
+    except FileNotFoundError:
+        pass
