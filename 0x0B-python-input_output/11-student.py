@@ -30,19 +30,19 @@ class Student:
         Returns a dictionary representation of the student.
 
         Args:
-            attrs (list): A list of attribute names to include in the dictionary.
+            attrs (list): list of attribute names to include in dictionary.
 
         Returns:
             dict: dictionary containing selected attributes of the student.
         """
-        if attrs is None:
-            return self.__dict__
-        return {attr: getattr(self, attr)
-        for attr in attrs if hasattr(self, attr)}
+        if (type(attrs) == list and
+                all(type(ele) == str for ele in attrs)):
+            return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
+        return self.__dict__
 
     def reload_from_json(self, json):
         """
         Replaces all attributes of the student with the provided JSON data.
         """
-        for key, value in json.items():
-            setattr(self, key, value)
+        for k, v in json.items():
+            setattr(self, k, v)
