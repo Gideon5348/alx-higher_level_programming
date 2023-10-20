@@ -2,8 +2,7 @@
 CREATE DATABASE IF NOT EXISTS hbtn_0d_2;
 
 -- Create or update user user_0d_2 and grant SELECT privilege
-CREATE OR REPLACE USER 'user_0d_2'@'localhost' IDENTIFIED BY 'user_0d_2_pwd';
+CREATE USER IF NOT EXISTS user_0d_2@localhost IDENTIFIED BY 'user_0d_2_pwd';
 
--- Grant USAGE on all databases and SELECT on hbtn_0d_2
-GRANT USAGE ON *.* TO 'user_0d_2'@'localhost';
-GRANT SELECT ON hbtn_0d_2.* TO 'user_0d_2'@'localhost';
+-- Grant SELECT privilege on hbtn_0d_2 database to user_0d_2
+GRANT SELECT ON hbtn_0d_2.* TO user_0d_2@localhost;
