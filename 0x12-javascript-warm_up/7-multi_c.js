@@ -12,7 +12,10 @@ if (isNaN(occurrences)) {
   console.log('Missing number of occurrences');
 } else {
   // Using a loop to print "C is fun" x times
-  for (let i = 0; i < Math.abs(occurrences); i++) {
-    console.log('C is fun');
+  const numOccurrences = Math.abs(occurrences);
+  const message = 'C is fun';
+
+  for (let i = 0; i < numOccurrences; i++) {
+    console.log(message);
   }
 }
