@@ -24,4 +24,4 @@ if __name__ == "__main__":
     if response.status_code == 404:
         print("Error 404: The requested URL was not found.")
     else:
-        print("Your email is:", response.text)
+        print(response.text)
