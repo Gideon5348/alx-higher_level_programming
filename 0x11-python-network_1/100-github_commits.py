@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-Lists 10 commits (from the most recent to oldest) of a GitHub repository
-by a specific user
+Lists 10 commits of a GitHub repository by a specific user
 """
 
 import requests
@@ -13,10 +12,7 @@ if __name__ == "__main__":
     owner_name = sys.argv[2]
 
     # Define the GitHub API endpoint for listing commits
-    url = (
-        f'https://api.github.com/repos/{owner_name}/'
-        f'{repo_name}/commits'
-    )
+    url = f'https://api.github.com/repos/{owner_name}/{repo_name}/commits'
 
     # Set up the request headers
     headers = {'Accept': 'application/vnd.github.v3+json'}
@@ -34,7 +30,6 @@ if __name__ == "__main__":
             sha = commit['sha']
             author_name = commit['commit']['author']['name']
             print(f'{sha}: {author_name}')
-
     else:
         # If there is an issue, print an error message
         print(f"Error: Unable to fetch commits. Status Code:
