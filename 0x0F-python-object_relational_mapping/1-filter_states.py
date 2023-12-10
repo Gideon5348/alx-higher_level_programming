@@ -27,7 +27,7 @@ if __name__ == "__main__":
     # Create a cursor object to execute SQL queries
     cursor = db.cursor()
 
-    # Execute the SQL query to select states starting with 'N' (case-insensitive)
+    # Execute the SQL query to select states starting with 'N'
     query = "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC"
     cursor.execute(query)
 
