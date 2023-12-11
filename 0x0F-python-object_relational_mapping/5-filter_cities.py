@@ -12,10 +12,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # Retrieve command line arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    state_name = sys.argv[4]
+    username, password, database, state_name = sys.argv[1:]
 
     # Connect to MySQL server running on localhost at port 3306
     db = MySQLdb.connect(
@@ -41,11 +38,8 @@ if __name__ == "__main__":
 
     # Fetch the result and display the results
     rows = cursor.fetchall()
-    if rows:
-        for row in rows:
-            print(row[0])
-    else:
-        print()
+    cities = ', '.join(row[0] for row in rows)
+    print(cities)
 
     # Close the cursor and database connection
     cursor.close()
