@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
     # Execute the SQL query to select cities of the given state
     query = """
-        SELECT GROUP_CONCAT(name SEPARATOR ', ')
+        SELECT name
         FROM cities
         JOIN states ON cities.state_id = states.id
         WHERE states.name = %s
@@ -40,9 +40,10 @@ if __name__ == "__main__":
     cursor.execute(query, (state_name,))
 
     # Fetch the result and display the results
-    result = cursor.fetchone()[0]
-    if result:
-        print(result)
+    rows = cursor.fetchall()
+    if rows:
+        for row in rows:
+            print(row[0])
     else:
         print()
 
