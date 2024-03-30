@@ -1,23 +1,20 @@
 #!/usr/bin/node
 
 const request = require('request');
+let num = 0;
 
-const apiUrl = process.argv[2];
-const characterId = '18';
-
-request(apiUrl, (error, response, body) => {
+request.get(process.argv[2], (error, response, body) => {
   if (error) {
-    console.error('Error:', error);
-    return;
+    console.log(error);
+  } else {
+    const content = JSON.parse(body);
+    content.results.forEach((film) => {
+      film.characters.forEach((character) => {
+        if (character.includes(18)) {
+          num += 1;
+        }
+      });
+    });
+    console.log(num);
   }
-
-  if (response.statusCode !== 200) {
-    console.error('Failed to fetch movie data. Status code:', response.statusCode);
-    return;
-  }
-
-  const filmsData = JSON.parse(body).results;
-  const moviesWithWedgeAntilles = filmsData.filter(movie => movie.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`));
-
-  console.log(moviesWithWedgeAntilles.length);
 });
