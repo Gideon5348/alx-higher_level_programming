@@ -24,11 +24,11 @@ request(apiUrl, (error, response, body) => {
     return new Promise((resolve, reject) => {
       request(url, (error, response, body) => {
         if (error) {
-          reject(error);
+          reject(new Error(error));
           return;
         }
         if (response.statusCode !== 200) {
-          reject(`Failed to fetch character data. Status code: ${response.statusCode}`);
+          reject(new Error(`Failed to fetch character data. Status code: ${response.statusCode}`));
           return;
         }
         const characterData = JSON.parse(body);
@@ -47,6 +47,6 @@ request(apiUrl, (error, response, body) => {
       characterNames.forEach(name => console.log(name));
     })
     .catch(error => {
-      console.error('Error:', error);
+      console.error('Error:', error.message);
     });
 });
